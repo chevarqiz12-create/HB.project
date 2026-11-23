@@ -1,26 +1,17 @@
-import type { Metadata } from "next";
-import "./globals.css";
-import { Header } from "@/widgets/header/Header";
-import { Footer } from "@/widgets/footer/Foooter";
+// app/layout.tsx
+import "./globals.css"; 
+import { Footer } from "@/widgets/footer";
 
 
 
-
-
-export default function RootLayout({ children }: LayoutProps<"/">) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html>
-      <body >
-        <Header />
-
-        <main  >
-
-          {children}
-
-        </main>
-
-      < Footer />
-    </body>
-    </html >
+    <html lang="ru">
+      <body>
+       
+        {children}
+        <Footer />
+      </body>
+    </html>
   );
 }

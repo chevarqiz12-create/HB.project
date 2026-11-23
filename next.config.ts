@@ -15,6 +15,16 @@ const nextConfig: NextConfig = {
       },
     },
   },
+
+  images: {
+    remotePatterns: [
+      { protocol: "https", hostname: "colormetall.com" },
+      { protocol: "https", hostname: "kzmc.kg" },
+      { protocol: "https", hostname: "stroimetall.kg" },
+      { protocol: "https", hostname: "nerjaveyka.pythonanywhere.com" },
+      { protocol: "https", hostname: "encrypted-tbn0.gstatic.com" },
+    ],
+  },
 };
 
 export default nextConfig;

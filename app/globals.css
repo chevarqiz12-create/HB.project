@@ -1,3 +1,12 @@
 @import "tailwindcss";
 
 
+@theme {
+  --color-bg: #222426;
+  --color-muted: #bfc3c7;
+  --color-brand-from: #4ab3ee;
+  --color-brand-to: #1f87c9;
+  --container-page: 1440px;
+  --color-footer: #1b1c1d;
+  --breakpoint-menu: 1071px;
+}
