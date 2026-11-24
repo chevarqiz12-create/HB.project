@@ -12,7 +12,6 @@ import logoDark from "@/shared/assets/imeges/logoDark.svg";
 import { NavLinks } from "./NavLinks";
 import { MobileMenu } from "./MobileMenu";
 
-// Показывается, пока NavLinks ждёт адрес страницы (те же ссылки, но без подчёркивания)
 function NavFallback({ className }: { className?: string }) {
   return (
     <nav className={cn("gap-10 text-base", className)}>
