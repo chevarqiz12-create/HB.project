@@ -1,6 +1,8 @@
+import { Suspense } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { FiPhone } from "react-icons/fi";
+import { NAV } from "@/shared/config/nav";
 import { PHONES } from "@/shared/config/contacts";
 import { cn } from "@/shared/lib/cn";
 import { Container } from "@/shared/ui/Container/Container";
@@ -9,6 +11,19 @@ import logo2 from "@/shared/assets/imeges/logo2.svg"
 import logoDark from "@/shared/assets/imeges/logoDark.svg";
 import { NavLinks } from "./NavLinks";
 import { MobileMenu } from "./MobileMenu";
+
+// Показывается, пока NavLinks ждёт адрес страницы (те же ссылки, но без подчёркивания)
+function NavFallback({ className }: { className?: string }) {
+  return (
+    <nav className={cn("gap-10 text-base", className)}>
+      {NAV.map(({ label, href }) => (
+        <Link key={href} href={href}>
+          {label}
+        </Link>
+      ))}
+    </nav>
+  );
+}
 
 export function Header({ variant = "dark" }: { variant?: "dark" | "light" }) {
   const isDark = variant === "dark";
@@ -32,7 +47,9 @@ export function Header({ variant = "dark" }: { variant?: "dark" | "light" }) {
           />
         </Link>
 
-        <NavLinks className="hidden menu:flex" />
+        <Suspense fallback={<NavFallback className="hidden menu:flex" />}>
+          <NavLinks className="hidden menu:flex" />
+        </Suspense>
 
         <div className="hidden items-center gap-3 text-sm menu:flex">
           <FiPhone size={20} />
@@ -49,7 +66,9 @@ export function Header({ variant = "dark" }: { variant?: "dark" | "light" }) {
           Контакты
         </ButtonLink>
 
-        <MobileMenu variant={variant} />
+        <Suspense fallback={null}>
+          <MobileMenu variant={variant} />
+        </Suspense>
       </Container>
     </header>
   );
